@@ -8,9 +8,46 @@ body {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
+    /* overflow-x: hidden;
+    overflow-y: auto; */
 	text-align: center;
     color: white;
+}
+.moves-button{
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	font-weight: 600;
+	font-size: 1.5rem;
+	/*color: #FFF5EE; (Seashell)*/
+	color: #FFF0F5;
+	margin-bottom: 30px;
+	font-style: italic;
+	/*min-height: 25px;*/
+}
+.score-tracker{
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 25px;
+	letter-spacing: 0.5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	/*background-color: #C71585;*/
+	/* background-color: #8B008B; */
+	color: #fff;
+}
+.move-icon{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 150px;
+	height: 150px;
+	padding: 0;
+	border: 2px; 
+	border-radius: 50%;
+	cursor: pointer;
+	vertical-align: middle;
 }
 .head-img{
     width: 100%;

@@ -1,37 +1,12 @@
 "use script"
 
-let score = JSON.parse(localStorage.getItem('score')) || {
+let scores = JSON.parse(localStorage.getItem('scores')) || {
 	wins : 0,
     losses : 0,
 	ties : 0,
 	};
 
-const snakeButton = document.querySelector(".snake");
-snakeButton.addEventListener('click', () => {
-    playGame('snake')
-});
-const waterButton = document.querySelector(".water");
-waterButton.addEventListener('click', () => {
-    playGame('water')
-})
-const gunButton = document.querySelector(".gun");
-gunButton.addEventListener('click', () => {
-    playGame('gun')
-})
-
-function pickComputerMove() {
-    const randomNumber = Math.random()
-    let computerMove = '';
-
-    if(randomNumber === 1) {
-        computerMove = 'snake';
-    } else if(randomNumber === 0) {
-        computerMove = 'gun'
-    } else if(randomNumber === -1) {
-        computerMove = 'water'
-    }
-    return computerMove;
-}
+updateMoves();
 
 function playGame(playerMove) {
     const computerMove = pickComputerMove();
@@ -67,21 +42,55 @@ if(playerMove === 'snake') {
         result = 'loss'
     }
 }
- if (result === 'You win') {
-    score.wins += 1;
- } else if (result === 'You lose') {
-    score.losses += 1;
- } else if (result === 'You win') {
-    score.ties += 1;
+ if (result === 'You Win') {
+    score.wins += 1
+ } else if (result === 'You Lose') {
+    score.losses += 1
+ } else if (result === 'Tie') {
+    score.ties += 1
  }
 
- updateMoves(playerMove, computerMove)
+localStorage.setItem('scores',JSON.stringify(scores));
+updateMoves(playerMove, computerMove);
+updateResult(result);
 updateScore();
+}
+
+const snakeButton = document.querySelector(".snake");
+snakeButton.addEventListener('click', () => {
+    playGame('snake')
+});
+const waterButton = document.querySelector(".water");
+waterButton.addEventListener('click', () => {
+    playGame('water')
+})
+const gunButton = document.querySelector(".gun");
+gunButton.addEventListener('click', () => {
+    playGame('gun')
+})
+
+function pickComputerMove() {
+    const randomNumber = Math.random()
+    let computerMove = '';
+
+    if(randomNumber === 1) {
+        computerMove = 'snake';
+    } else if(randomNumber === 0) {
+        computerMove = 'gun'
+    } else if(randomNumber === -1) {
+        computerMove = 'water'
+    }
+    return computerMove;
 }
 
 function updateScore() {
 	document.querySelector('.score-tracker')
-	    .innerHTML = `wins : ${score.wins}, losses : ${score.losses}, ties : ${score.ties}`;	    	
+	    .innerHTML = `wins : ${scores.wins}, losses : ${scores.losses}, ties : ${scores.ties}`;	    	
+};
+
+function updateResult(result) {
+  	document.querySelector('.result')
+  	    .innerHTML = `${result}`
 };
 
 function updateMoves(playerMove, computerMove) {
@@ -91,9 +100,9 @@ function updateMoves(playerMove, computerMove) {
       return;
     }
     const imageUrls = {
-        snake: 'SWG-project.png/Snake-image.jpg',
-        water: 'SWG-project.png/Water-image.jpg',
-        gun: 'SWG-project.png/Gun-image.jpg'
+        snake: 'SWG-project.png/Snake_img.jpg',
+        water: 'SWG-project.png/Water_img.jpg',
+        gun: 'SWG-project.png/Gun_img.jpg'
     };
   	document.querySelector('.moves-button')
   	    .innerHTML = `You <img src="${imageUrls[playerMove]}" class="move-icon" alt="${playerMove}"> 
