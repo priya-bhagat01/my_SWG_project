@@ -18,3 +18,7 @@ inputDict = {
     0: "Gun" ,
     -1: "Water"
 }
+
+playerMove = playerDict[playerInput]
+
+print(f"You chose {inputDict[playerMove]}\nComputer chose {inputDict[computerMove]}")
