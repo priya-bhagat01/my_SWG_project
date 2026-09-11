@@ -109,3 +109,13 @@ const gunButton = document.querySelector(".gun");
 gunButton.addEventListener('click', () => {
     playGame('gun')
 })
+
+const resetButton = document.querySelector('.reset-button')
+
+function toReset () {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.removeItem('score');
+    updateScore();  
+}
