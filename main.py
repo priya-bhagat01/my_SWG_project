@@ -24,7 +24,7 @@ playerMove = playerDict[playerInput]
 print(f"You chose {inputDict[playerMove]}\nComputer chose {inputDict[computerMove]}")
 
 if(computerMove == playerMove):
-    print("It's a draw")
+    print("It's a tie")
 else:
     if(computerMove == 1 and playerMove == 0):
         print("You Win!!")
