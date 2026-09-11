@@ -52,6 +52,7 @@ body {
     height: 200px;
     /* display: inline-block; */
     /* padding-right: 120px; */
+    /* padding: auto; */
 }
 .snake-image ,
 .water-image ,
