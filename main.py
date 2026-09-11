@@ -26,17 +26,23 @@ print(f"You chose {inputDict[playerMove]}\nComputer chose {inputDict[computerMov
 if(computerMove == playerMove):
     print("It's a draw")
 else:
-    if(computerMove == 1 and playerMove == 0):
+    if(computerMove == 1 and playerMove == 0): #Subtracting 1
         print("You Win!!")
-    elif(computerMove == 1 and playerMove == -1):
+    elif(computerMove == 1 and playerMove == -1): #Subtracting 2
         print("You Lose!!")
-    elif(computerMove == -1 and playerMove == 1):
+    elif(computerMove == -1 and playerMove == 1): #Subtracting -2
         print("You Win!!")
-    elif(computerMove == -1 and playerMove == 0):
+    elif(computerMove == -1 and playerMove == 0): #Subtracting -1
         print("You Lose!!")
-    elif(computerMove == 0 and playerMove == 1):
+    elif(computerMove == 0 and playerMove == -1): #Subtracting 1
         print("You Win!!")
-    elif(computerMove == 0 and playerMove == -1):
+    elif(computerMove == 0 and playerMove == 1): #Subtracting -1
         print("You Lose!!")
     else:
         print("Something went wrong!")
+
+#OR 
+if((computerMove - playerMove) == -1 or (computerMove - playerMove) == 2 ):
+    print("You Lose!!")
+else:
+    print("You Win!!")
