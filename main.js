@@ -113,9 +113,34 @@ gunButton.addEventListener('click', () => {
 const resetButton = document.querySelector('.reset-button')
 
 function toReset () {
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
-    localStorage.removeItem('score');
+    scores.wins = 0;
+    scores.losses = 0;
+    scores.ties = 0;
+    localStorage.removeItem('scores');
     updateScore();  
 }
+
+function showConfirmation() {
+    const html = `
+      <div class = "container"
+      <p class= "reset-para">Are You Sure You Want to Reset the Score</p>
+
+      <button class= "confirm-yes" onclick= "
+         toReset();
+         document.querySelector('.confirmation-button')
+          .innerHTML = '';
+      ">Yes</button>
+
+      <button class= "confirm-no" onclick= "
+         document.querySelector('.confirmation-button')
+          .innerHTML = '';
+      ">No</button>
+      </div>`;
+       
+    document.querySelector('.confirmation-button')
+      .innerHTML += html
+}
+
+resetButton.addEventListener('click', () => {
+    showConfirmation();
+});

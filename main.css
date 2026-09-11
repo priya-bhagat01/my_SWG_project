@@ -140,3 +140,10 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
+.confirm-yes,
+.confirm-no{
+	font-size: 35px;
+	font-family: sans-serif;
+	color: white;
+	background-color: #035151;
+}
