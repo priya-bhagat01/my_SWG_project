@@ -13,74 +13,47 @@ function playGame(playerMove) {
     let result = '';
 if(playerMove === 'snake') {
     if(computerMove === 'snake') {
-        result = 'tie'
+        result = 'Tie'
     }
     if(computerMove === 'water') {
-        result = 'win'
+        result = 'You Win'
     }
     if(computerMove === 'gun') {
-        result = 'loss'
+        result = 'You Lose'
     }
 } else if(playerMove === 'water') {
     if(computerMove === 'water') {
-        result = 'tie'
+        result = 'Tie'
     }
     if(computerMove === 'gun') {
-        result = 'win'
+        result = 'You Win'
     }
     if(computerMove === 'snake') {
-        result = 'loss'
+        result = 'You Lose'
     }
 } else if(playerMove === 'gun') {
     if(computerMove === 'gun') {
-        result = 'tie'
+        result = 'Tie'
     }
     if(computerMove === 'snake') {
-        result = 'win'
+        result = 'You Win'
     }
     if(computerMove === 'water') {
-        result = 'loss'
+        result = 'You Lose'
     }
 }
  if (result === 'You Win') {
-    score.wins += 1
+    scores.wins += 1
  } else if (result === 'You Lose') {
-    score.losses += 1
+    scores.losses += 1
  } else if (result === 'Tie') {
-    score.ties += 1
+    scores.ties += 1
  }
 
 localStorage.setItem('scores',JSON.stringify(scores));
 updateMoves(playerMove, computerMove);
 updateResult(result);
 updateScore();
-}
-
-const snakeButton = document.querySelector(".snake");
-snakeButton.addEventListener('click', () => {
-    playGame('snake')
-});
-const waterButton = document.querySelector(".water");
-waterButton.addEventListener('click', () => {
-    playGame('water')
-})
-const gunButton = document.querySelector(".gun");
-gunButton.addEventListener('click', () => {
-    playGame('gun')
-})
-
-function pickComputerMove() {
-    const randomNumber = Math.random()
-    let computerMove = '';
-
-    if(randomNumber === 1) {
-        computerMove = 'snake';
-    } else if(randomNumber === 0) {
-        computerMove = 'gun'
-    } else if(randomNumber === -1) {
-        computerMove = 'water'
-    }
-    return computerMove;
 }
 
 function updateScore() {
@@ -101,11 +74,38 @@ function updateMoves(playerMove, computerMove) {
     }
     const imageUrls = {
         snake: 'SWG-project.png/Snake_img.jpg',
-        water: 'SWG-project.png/Water_img.jpg',
-        gun: 'SWG-project.png/Gun_img.jpg'
+        water: 'SWG-project.png/Water-img.jpg',
+        gun: 'SWG-project.png/Gun-img.jpg'
     };
   	document.querySelector('.moves-button')
   	    .innerHTML = `You <img src="${imageUrls[playerMove]}" class="move-icon" alt="${playerMove}"> 
         vs
         <img src="${imageUrls[computerMove]}" class="move-icon" alt="${computerMove}">Computer`;
 };
+
+function pickComputerMove() {
+    const randomNumber = Math.random()
+    let computerMove = '';
+
+    if(randomNumber >= 0 && randomNumber < 1/3) {
+        computerMove = 'snake';
+    } else if(randomNumber >= 1/3 && randomNumber < 2/3) {
+        computerMove = 'gun'
+    } else if(randomNumber >= 2/3 && randomNumber < 1) {
+        computerMove = 'water'
+    }
+    return computerMove;
+}
+
+const snakeButton = document.querySelector(".snake");
+snakeButton.addEventListener('click', () => {
+    playGame('snake')
+});
+const waterButton = document.querySelector(".water");
+waterButton.addEventListener('click', () => {
+    playGame('water')
+})
+const gunButton = document.querySelector(".gun");
+gunButton.addEventListener('click', () => {
+    playGame('gun')
+})
