@@ -27,13 +27,21 @@ body {
 .score{
     background-image: url(SWG-project.png/Wood-img2.jpg);
     width: 100%;
-    height: 70px;
+    height: 100px;
     margin-bottom: 15px;
 }
 .result{
     padding-top: 25px;
     font-size: 25px;
     font-weight: bold;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+}
+.score-tracker{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 0;
+    margin-top: 0;
 }
 .main-container{
     /* display: inline-block; */
@@ -59,13 +67,16 @@ body {
 .gun-image{
     width: 200px;
     height: 200px;
+    margin-bottom: 10px;
 }
 .snake ,
 .water ,
 .gun{
     font-size: 25px;
     padding: 4px;
+    width: 200px;
     border-radius: 15px;
+    color: white;
 }
 .snake{
     background-color: red;
